@@ -1,0 +1,118 @@
+#include "my_math.h"
+#include <stdio.h>
+#include <math.h>
+
+#test log_test
+    for (double j = 1; j < 100.0; j++){
+        float a = log(j);
+        float b = my_log(j);
+        ck_assert_float_eq(a, b);
+    }
+
+#test pow_test
+    for (double j = 0.1; j < 5.0; j += 0.1) {
+        for (double i = 0.1; i < 5.0; i += 0.1) {
+            float a = pow(j, i);
+            double b = my_pow(j, i);
+            ck_assert_float_eq_tol(a, b, 1e-7);
+        }
+    }
+#test floor_test
+    for (double j = 0.1; j < 5.0; j+= 0.1){
+        float a = floor(j);
+        float b = my_floor(j);
+        ck_assert_float_eq(a, b);
+    }
+#test exp_test
+    for (double j = 0.1; j < 5.0; j+= 0.1){
+        float a = exp(j);
+        float b = my_exp(j);
+        ck_assert_float_eq(a, b);
+    }
+#test fabs_test
+    for (double j = 0.1; j < 5.0; j+= 0.1){
+        float a = fabs(j);
+        float b = my_fabs(j);
+        ck_assert_float_eq(a, b);
+    }
+#test abs_test
+    for (int j = -10; j < 5; j+= 1){
+        int a = abs(j);
+        int b = my_abs(j);
+        ck_assert_int_eq(a, b);
+        }
+#test asin_test
+    for (double j = -1.0; j < -0.1; j+= 0.1){
+        float a = asin(j);
+        float b = my_asin(j);
+        ck_assert_float_eq(a, b);
+    }
+    for (double j = 0.0; j < 0.9; j+= 0.1){
+        float a = asin(j);
+        float b = my_asin(j);
+        ck_assert_float_eq(a, b);
+    }
+#test acos_test
+for (double j = -1.0; j < -0.1; j+= 0.1){
+        float a = acos(j);
+        float b = my_acos(j);
+        ck_assert_float_eq(a, b);
+    }
+    for (double j = 0.0; j < 0.8; j+= 0.1){
+        float a = acos(j);
+        float b = my_acos(j);
+        ck_assert_float_eq(a, b);
+    }
+#test sin_test
+    for (double j = -360.0; j < 360.0; j+= 10){
+        float a = sin(j);
+        float b = my_sin(j);
+        ck_assert_float_eq(a, b);
+    }
+#test ceil_test
+    for (double j = -10.0; j < 5.0; j+= 0.1){
+        float a = ceil(j);
+        float b = my_ceil(j);
+        ck_assert_float_eq(a, b);
+    }
+#test fmod_test
+    for (double j = 0.1; j < 5.0; j += 0.1) {
+        for (double i = 0.2; i < 5.0; i += 0.1) {
+            double a = fmod(j, i);
+            char str1[256];
+            sprintf(str1, "%.6f", a);
+            long double b = my_fmod(j, i);
+            char str2[256];
+            sprintf(str2, "%.6Lf", b);
+            ck_assert_str_eq(str1, str2);
+        }
+    }
+#test csqrt_test
+    for (double j = 0.1; j < 10.0; j+= 0.1){
+        float a = sqrt(j);
+        float b = my_sqrt(j);
+        ck_assert_float_eq(a, b);
+    }
+#test cos_test
+    for (double j = -360.0; j < 360.0; j+= 10){
+        float a = cos(j);
+        float b = my_cos(j);
+        ck_assert_float_eq(a, b);
+    }
+#test atan_test
+   for (double j = -1.0; j < -0.1; j+= 0.1){
+        float a = atan(j);
+        float b = my_atan(j);
+        ck_assert_float_eq(a, b);
+    }
+    for (double j = 0.0; j < 0.9; j+= 0.1){
+        float a = atan(j);
+        float b = my_atan(j);
+        ck_assert_float_eq(a, b);
+    }
+#test tan_test
+   for (double j = -4.0; j < 3.0; j+= 0.1){
+        float a = tan(j);
+        float b = my_tan(j);
+        ck_assert_float_eq(a, b);
+    }
